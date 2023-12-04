@@ -1,15 +1,22 @@
 body {
-  background: #150f21;
+  background: #F1FAEE;
+  text-align: center;
   font-size: 18px;
+  font-family: "Hedvig Letters Serif";
+
 }
 
 p {
   line-height: 1.5;
 }
 
+h1 {
+
+}
+
 .container {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 350px auto;
 }
 
 /* Cards */
@@ -20,12 +27,12 @@ p {
   box-sizing: border-box;
 }
 
-.column-1 {
-  padding-top: 100px;
-}
-
 .card {
-  width: 92%;
+  width: 100%;
+  overflow-wrap: break-word;
+  overflow: hidden;
+    text-overflow: ellipsis;
+  max-height: 400px;
   max-width: 340px;
   margin-left: auto;
   margin-right: auto;
@@ -35,22 +42,31 @@ p {
   cursor: pointer;
   margin-bottom: 60px;
 }
+.card p {
+  margin: 20px;
+}
 
 .border {
   position: absolute;
   width: 100%;
   height: 100%;
-  padding: 6px;
-  border: 1px solid #fff;
-  opacity: 0.5;
-  left: -6px;
-  top: -6px;
+/*  width: 265px;
+  height: 385px;*/
+/*  padding: 6px;*/
+  border: 7px solid #fff;
+  opacity: .75;
+/*  left: -6px;
+  top: -6px;*/
 }
 
 .card h1 {
   position: relative;
-  padding: 190px 0px 100px 10px;
+  padding: 20px 0px 100px 0px;
   width: 90%;
+}
+
+.card p {
+  margin: ;
 }
 
 .card > img {
@@ -61,11 +77,11 @@ p {
 }
 
 .card-color-0 {
-  background-color: #EB5160;
+  background-color: #1D3557;
 }
 
 .card-color-1 {
-  background-color: #8F3985;
+  background-color: #457B9D;
 }
 
 .card-color-2 {
@@ -104,7 +120,7 @@ p {
 .open-content .text {
   background: #fff;
   margin-top: -56%;
-  padding: 60% 5% 5% 5%;
+  padding: 5% 5% 5% 5%;
   width: 80%;
   margin-left: 5%;
   margin-bottom: 5%;
@@ -159,7 +175,7 @@ p {
 }
 
 .card h1 {
-  transform: translate3d(20%, 0px, 0px);  
+  transform: translate3d(5%, 0px, 0px);  
   transition: opacity 200ms linear 120ms, transform 200ms ease-in 120ms;
 }
 

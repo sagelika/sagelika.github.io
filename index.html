@@ -7,6 +7,7 @@
   analytics.page();
   }}();
 </script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Hedvig+Letters+Serif">
 <meta charset="utf-8" http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 <script src="http://d3js.org/d3.v3.min.js"></script>
 
@@ -32,10 +33,6 @@ div.tooltip {
 	pointer-events: none;         
 }
         
-/* Legend Font Style */
-body {
-	font: 11px sans-serif;
-}
         
 /* Legend Position Style */
 .legend {
@@ -62,13 +59,13 @@ http://bl.ocks.org/mbostock/3888852  */
 
 		
 //Width and height of map
-var width = 960;
-var height = 500;
+var width = 1400;
+var height = 700;
 
 // D3 Projection
 var projection = d3.geo.albersUsa()
 				   .translate([width/2, height/2])    // translate to center of screen
-				   .scale([1000]);          // scale things down so see entire US
+				   .scale([1300]);          // scale things down so see entire US
         
 // Define path generator
 var path = d3.geo.path()               // path generator that will convert GeoJSON to SVG paths
@@ -76,10 +73,10 @@ var path = d3.geo.path()               // path generator that will convert GeoJS
 
 		
 // Define linear scale for output
-var color = d3.scale.linear().domain([0,9])
-			  .range(["white","red"]);
+var color = d3.scale.linear().domain([0,7])
+			  .range(["#E6C4C6","#E63B46"]);
 
-var legendText = ["ehy", "States Lived", "States Visited", "Nada"];
+//var legendText = ["ehy", "States Lived", "States Visited", "Nada"];
 
 //Create SVG element and append map to the SVG
 var svg = d3.select("body")
@@ -96,7 +93,7 @@ var div = d3.select("body")
 // Load in my states data!
 d3.csv("PortfoliobyBorrowerLocation-Table1.csv", function(data) {
 //color.domain([0,1,2,3]); // setting the range of the input data
-
+var total = 0;
 // Load GeoJSON data and merge with states data
 d3.json("us-states.json", function(json) {
 
@@ -109,6 +106,7 @@ for (var i = 0; i < data.length; i++) {
 	//var dataValue = data[i].visited;
 	var loandebt = data[i].Balance;
 
+
 	// Find the corresponding state inside the GeoJSON
 	for (var j = 0; j < json.features.length; j++)  {
 		var jsonState = json.features[j].properties.name;
@@ -118,11 +116,34 @@ for (var i = 0; i < data.length; i++) {
 		// Copy the data value into the JSON
 		json.features[j].properties.Balance = loandebt; 
 
+		//add to total us debt
+		total += (+loandebt);
+
 		// Stop looking through the JSON
 		break;
 		}
 	}
 }
+const dec = d3.format(".9f");
+svg.append("text")
+        .attr("x", (width / 2))             
+        .attr("y", 50)
+        .attr("text-anchor", "middle")  
+        .style("font-size", "24px") 
+        .text("Student Loan Debt in America");
+        svg.append("text")
+        .attr("x", (width / 2))             
+        .attr("y", 70)
+        .attr("text-anchor", "middle")  
+        .style("font-size", "16px") 
+        .text("Data as of June 2023");
+        svg.append("text")
+        .attr("x", (width / 2))             
+        .attr("y", 85)
+        .attr("text-anchor", "middle")  
+        .style("font-size", "14px") 
+        .text("Balance in Billions");
+
 		
 // Bind the data to the SVG and create one path per GeoJSON feature
 svg.selectAll("path")
@@ -140,7 +161,7 @@ svg.selectAll("path")
 
 	if (value) {
 	//If value exists…
-	return color(value/10);
+	return color(value/7);
 	} else {
 	//If value is undefined…
 	return "rgb(213,222,217)";
@@ -199,25 +220,24 @@ svg.selectAll("path")
 //            .style("opacity", 0);   
 //     });
 // });  
-        
-// Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
-var legend = d3.select("body").append("svg")
-      			.attr("class", "legend")
-     			.attr("width", 240)
-    			.attr("height", 200)
-   				.selectAll("g")
-   				.data(color.domain().slice().reverse())
-   				.enter()
-   				.append("g");
-	legend.selectAll('rect')
-    .data(d3.range(10))
-    .enter()
-    .append('rect')
-    .attr('x',function(d,i) { return i * 20; })
-    .attr('y',50)
-    .attr('width',20)
-    .attr('height',20)
-    .attr('fill',function(d,i) { return color(i); });
+  
+// var legend = d3.select("body").append("svg")
+//       			.attr("class", "legend")
+//      			.attr("width", 240)
+//     			.attr("height", 200)
+//    				.selectAll("g")
+//    				.data(color.domain().slice().reverse())
+//    				.enter()
+//    				.append("g");
+// 	legend.selectAll('rect')
+//     .data(d3.range(10))
+//     .enter()
+//     .append('rect')
+//     .attr('x',function(d,i) { return i * 20; })
+//     .attr('y',50)
+//     .attr('width',20)
+//     .attr('height',20)
+//     .attr('fill',function(d,i) { return color(i); });
   	// legend.append("rect")
    // 		  .attr("width", 18)
    // 		  .attr("height", 18)
@@ -265,16 +285,46 @@ var legend = d3.select("body").append("svg")
 </section>
 -->
 <div class="container">
+	<h1> What Can We, the People, Do?</h1>
+	<h3> We have 2 ideas to bring power back to the people!</h3>
+	<h3> Learn more about them in the information cards</h3>
+
   <div class="card-column column-0">
     <div class="card card-color-0">
       <div class="border"></div>
-      <h1>poop deli</h1>
+      <h1>EduUnity Pledge</h1>
+      <p> Introducing the Community Pledge – an innovative and empowering initiative that transforms communities into hubs of support, collaboration, and financial freedom!</p>
+
+      <p><br><br>
+      Every year, individuals from all walks of life can join hands in a collective commitment to contribute a monthly pledge. What's the magic behind this pledge? It all goes into a community bank, and here's the exciting part – we're tackling student loan debt head-on!
+<br><br>
+Imagine this: By pledging your support, you're not just joining a community; you're embarking on a journey to alleviate the burden of student loans. And here's the best part – anyone can join, even those without student loan debt. We believe in the strength of unity, where every member plays a crucial role in building a brighter future.
+<br><br>
+By contributing every month, you're not only ensuring the reduction or, dare we say, the fortunate payoff of your own loans but also supporting fellow community members on their educational journeys. It's a win-win!
+<br><br>
+But that's not all – we're keeping it local. We're all about fostering community involvement and ensuring that the money raised comes right back to where it's needed most – your community. It's not just a pledge; it's a commitment to each other's success.
+<br><br>
+</p>
     </div>
   </div>
   <div class="card-column column-1">
     <div class="card card-color-1">
       <div class="border"></div>
-      <h1>Get your game on, go play</h1>
+      <h1>Loan Lotto</h1>
+      <p>Introducing the Community Lottery – where dreams come true, and student loan debt becomes a thing of the past! </p>
+      <p><br><br>
+      Picture this: Every month or every two weeks, the excitement builds as lottery tickets fly off the shelves and generous donations pour in. Why? Because each ticket sold fuels the pot, and guess what? We're not just talking about a jackpot – we're talking about paying down someone's student loan debt!
+  		<br><br>
+
+The moment arrives, the lottery is drawn, and boom – we have a winner! The magic doesn't stop there – the prize money goes straight to wiping out the lucky winner's student loans. But here's the kicker – if the debt is less than the winnings, the surplus rolls over to the next drawing. It's like a perpetual cycle of generosity and financial relief!
+<br><br>
+
+Our dream? To reach a point where the pot never stops growing. Imagine the possibilities! More drawings, more winners, and more lives changed. We're on a mission to alleviate the pressure of student loan debt, one lottery ticket at a time.
+<br><br>
+But wait, there's more – this is a local affair. We believe in the power of community, so every dollar raised stays right where it belongs – in your community. It's not just a lottery; it's a movement that brings neighbors together, supporting each other's education and future success.
+<br><br>
+
+</p>
     </div>
   </div>
 </div>

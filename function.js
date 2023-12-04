@@ -67,15 +67,14 @@ function onCardClick(card, i) {
 function animateCoverUp(card) {
   // get the position of the clicked card
   var cardPosition = card.getBoundingClientRect();
-  console.log(card);
   // get the style of the clicked card
   var cardStyle = getComputedStyle(card);
   setCoverPosition(cardPosition);
   setCoverColor(cardStyle);
   scaleCoverToFillWindow(cardPosition);
   // update the content of the opened page
-  openContentText.innerHTML = '<h1>'+card.children[1].textContent+'</h1>'+paragraphText;
-  //openContentImage.src = card.children[1].src;
+  openContentText.innerHTML = '<h1>'+card.children[1].textContent+'</h1>'+card.children[2].innerHTML + '</h1>'+card.children[3].innerHTML;
+  ///openContentImage.src = card.children[1].src;
   setTimeout(function() {
     // update the scroll position to 0 (so it is at the top of the 'opened' page)
     window.scroll(0, 0);
@@ -94,7 +93,7 @@ function animateCoverBack(card) {
   setTimeout(function() {
     // set content back to empty
     openContentText.innerHTML = '';
-    openContentImage.src = '';
+   // openContentImage.src = '';
     // style the cover to 0x0 so it is hidden
     cover.style.width = '0px';
     cover.style.height = '0px';
