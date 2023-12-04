@@ -19,6 +19,8 @@ function selectElements() {
   openContentText = document.getElementById('open-content-text'),
   openContentImage = document.getElementById('open-content-image')
   closeContent = document.getElementById('close-content');
+  console.log(cards);
+  console.log(cards[0].classList);
 }
 
 /* Attaching three event listeners here:
@@ -49,10 +51,16 @@ function onCardClick(card, i) {
   currentCard.className += ' clicked';
   // animate the card 'cover' after a 500ms delay
   setTimeout(function() {animateCoverUp(currentCard)}, 500);
+  console.log(card.id);
+
+  // if (card.id == "card0") {
+  //   document.getElementById("open-content").href = "newURL";
+  // }
   // animate out the other cards
   animateOtherCards(currentCard, true);
   // add the open class to the page content
   openContent.className += ' open';
+  closeContent.href += '#';
 }
 
 /*
@@ -77,7 +85,7 @@ function animateCoverUp(card) {
   ///openContentImage.src = card.children[1].src;
   setTimeout(function() {
     // update the scroll position to 0 (so it is at the top of the 'opened' page)
-    window.scroll(0, 0);
+   // window.scroll(0, 0);
     // set page to open
     pageIsOpen = true;
   }, 300);
@@ -130,6 +138,7 @@ function scaleCoverToFillWindow(cardPosition) {
 function onCloseClick() {
   // remove the open class so the page content animates out
   openContent.className = openContent.className.replace(' open', '');
+  closeContent.href = closeContent.href.replace('#', '');
   // animate the cover back to the original position card and size
   animateCoverBack(currentCard);
   // animate in other cards

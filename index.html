@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<script>
-  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){if(window.analytics.initialized)return window.analytics[e].apply(window.analytics,arguments);var i=Array.prototype.slice.call(arguments);i.unshift(e);analytics.push(i);return analytics}};for(var i=0;i<analytics.methods.length;i++){var key=analytics.methods[i];analytics[key]=analytics.factory(key)}analytics.load=function(key,i){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=i};analytics._writeKey="ELoMdElI6qMiJhbViIYuAjsUoRZiewyb";;analytics.SNIPPET_VERSION="4.16.1";
-  analytics.load("ELoMdElI6qMiJhbViIYuAjsUoRZiewyb");
-  analytics.page();
-  }}();
+	<script src="analytics.js">
+  // !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){if(window.analytics.initialized)return window.analytics[e].apply(window.analytics,arguments);var i=Array.prototype.slice.call(arguments);i.unshift(e);analytics.push(i);return analytics}};for(var i=0;i<analytics.methods.length;i++){var key=analytics.methods[i];analytics[key]=analytics.factory(key)}analytics.load=function(key,i){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=i};analytics._writeKey="ELoMdElI6qMiJhbViIYuAjsUoRZiewyb";;analytics.SNIPPET_VERSION="4.16.1";
+  // analytics.load("ELoMdElI6qMiJhbViIYuAjsUoRZiewyb");
+  // analytics.page();
+  // }}();
 </script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Hedvig+Letters+Serif">
 <meta charset="utf-8" http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
@@ -289,8 +289,8 @@ svg.selectAll("path")
 	<h3> We have 2 ideas to bring power back to the people!</h3>
 	<h3> Learn more about them in the information cards</h3>
 
-  <div class="card-column column-0">
-    <div class="card card-color-0">
+  <div  class="card-column column-0">
+    <div id="card0" class="card card-color-0">
       <div class="border"></div>
       <h1>EduUnity Pledge</h1>
       <p> Introducing the Community Pledge – an innovative and empowering initiative that transforms communities into hubs of support, collaboration, and financial freedom!</p>
@@ -308,7 +308,7 @@ But that's not all – we're keeping it local. We're all about fostering communi
     </div>
   </div>
   <div class="card-column column-1">
-    <div class="card card-color-1">
+    <div id="card1" class="card card-color-1">
       <div class="border"></div>
       <h1>Loan Lotto</h1>
       <p>Introducing the Community Lottery – where dreams come true, and student loan debt becomes a thing of the past! </p>
